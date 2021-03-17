@@ -1,5 +1,8 @@
 <template>
   <div>
+    <animal-form
+		@add-animal="addAnimal"
+	></animal-form>
     <h1>Animal List</h1>
     <table style="width: 100%">
       <tr>
@@ -19,7 +22,11 @@
 </template>
 
 <script>
+import AnimalForm from './AnimalForm'
 export default {
+  components: {
+    AnimalForm
+  },
   data() {
     return {
       animals: [
@@ -59,7 +66,10 @@ export default {
         const animalToMove = this.animals[indexToMove]
 				this.removeAnimal(indexToMove)
 				this.animals.unshift(animalToMove);
-      }
+      },
+       addAnimal(newAnimal) {
+				this.animals.push(newAnimal)
+			},
   }
 };
 </script>
